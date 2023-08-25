@@ -28,12 +28,14 @@ class Customer:
     name = property(get_given_name, set_given_name)
     family_name = property(get_family_name, set_family_name)
     
+    
 class Restaurant:
     def __init__(self, name):
         self.name = name
         
     def name(self):
         return self.name  
+  
     
 class Review:
     reviews = []
@@ -49,5 +51,11 @@ class Review:
     @classmethod
     def all(cls):
         return cls.reviews
+    
+    def customer(self):
+        return self.customer
+    
+    def restaurant(self):
+        return self.restaurant
           
         
