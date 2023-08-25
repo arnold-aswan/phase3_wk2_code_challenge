@@ -21,3 +21,12 @@ class Customer:
     
     name = property(given_name, set_name)
     family_name = property(family_name, set_family_name)
+    
+class Restaurant:
+    def __init__(self, name):
+        self.name = name
+        
+    def name(self):
+        return self.name    
+        
+        
