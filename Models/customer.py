@@ -46,7 +46,7 @@ class Customer:
         for customer in cls.customer_count:
             if name == customer.full_name():
                 return customer
-        return None
+            else:return "customer name not found"
             
     @classmethod
     def find_all_by_given_name(cls, name):
