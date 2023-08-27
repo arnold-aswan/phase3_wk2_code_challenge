@@ -57,25 +57,22 @@ class Restaurant:
     restaurants = []
     def __init__(self, name):
         self.name = name
-        self.reviews = []
         Restaurant.restaurants.append(self)
         
     def name(self):
         return self.name  
         
-    def add_review(self, review):
-        self.reviews.append(review)
-            
     def reviews(self):
-        return self.reviews    
+        return [review for review in Review.reviews if review.restaurant().name() == self.name]    
     
     def customers(self):
-        unique_customers = [review.customer() for review in self.reviews]
+        unique_customers = [review.customer() for review in self.reviews()]
         return list(set(unique_customers))
     
     def average_star_rating(self):
-        rating = sum(review.rating for review in self.reviews)
-        return rating / len(self.reviews)
+        rating = sum(review.rating() for review in self.reviews())
+        return rating / len(self.reviews())
+        
         
 class Review:
     reviews = []
