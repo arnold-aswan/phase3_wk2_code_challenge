@@ -3,14 +3,14 @@ from models.review import Review
 class Restaurant:
     restaurants = []
     def __init__(self, name):
-        self.name = name
+        self._name = name
         Restaurant.restaurants.append(self)
         
-    def name(self):
-        return self.name  
+    def get_name(self):
+        return self._name  
         
     def reviews(self):
-        return [review for review in Review.reviews if review.restaurant().name() == self.name]    
+        return [review for review in Review.reviews if review.restaurant().name() == self._name]    
     
     def customers(self):
         unique_customers = [review.customer() for review in self.reviews()]
