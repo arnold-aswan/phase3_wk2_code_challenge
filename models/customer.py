@@ -5,7 +5,7 @@ class Customer:
     def __init__(self, given_name, family_name):
         self._given_name = given_name
         self._family_name = family_name
-        self.reviews = []
+        # self.reviews = []
         Customer.customer_count.append(self)
         
     def given_name(self):
@@ -45,19 +45,19 @@ class Customer:
     def add_review(self, restaurant, rating):
         """Creates a new review and associate it with that customer
         """
-        Review(self, restaurant, rating) #call Review instance & pass in 3 arguments
-
-    
+        Review(self, restaurant, rating) 
+        
     def restaurants(self):
-        """Returns unique list of restaurants
+        """Returns unique list of restaurants a customer has reviewed
         """
-        unique_restaurants = [review.restaurant() for review in self.reviews]  
+        unique_restaurants = [review.restaurant() for review in Review.reviews if review.customer() == self ]  
         return list(set(unique_restaurants)) 
     
     def num_reviews(self):
-        """Returns the number of reviews
+        """Returns the number of reviews a customer has authored
         """
-        return len(self.reviews)
+        revs = [review.customer() for review in Review.reviews if review.customer() == self]
+        return len(revs)
     
     @classmethod
     def find_by_name(cls, name):
