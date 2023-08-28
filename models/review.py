@@ -19,7 +19,7 @@ class Review:
         return cls.reviews
     
     def customer(self):
-        """Returns the customerobject for that review
+        """Returns the customer object for that review
         """
         return self._customer
     
